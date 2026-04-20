@@ -2,6 +2,7 @@
 
 namespace MembershipCore.Repositories
 {
+    // Interfaz para manejar usuarios en la base de datos
     public interface IUserRepository
     {
         Task<IEnumerable<User>> GetAllAsync();// Obtener todos los usuarios
