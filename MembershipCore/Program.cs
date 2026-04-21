@@ -1,4 +1,5 @@
 using MembershipCore.Data;
+using MembershipCore.Repositories;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=Membership.db"));
+
+//Registra los respositorios en el contenedor de dependencias 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IMembershipRepository, MembershipRepository>();
 
 
 var app = builder.Build();
